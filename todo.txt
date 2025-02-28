@@ -1,0 +1,13 @@
+collect images for projects
+create a project card component that displays a list of images in a carousel
+create content for every project
+make sure there are links to the projects
+make sure there is a tech tag for every tech used in the project
+make sure the project card is a link to the project
+work on dark/light mode
+make the site responsive
+work on project descriptions
+add favicon
+work on text for About me section
+think on how to make header max width
+work on font sizes
