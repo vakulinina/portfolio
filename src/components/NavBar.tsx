@@ -21,7 +21,7 @@ const NavLink = ({ href, label }: { href: string; label: string }) => {
 export const NavBar = () => {
   return (
     <nav className="flex max-w-fit items-center mx-auto top-0 left-0 z-10 rounded-2xl bg-white/60 backdrop-blur-sm p-1.5 h-14">
-      <ul className="flex gap-6 justify-center items-center w-full">
+      <ul className="flex gap-1 justify-center items-center w-full">
         {navItems.map((item, index, array) => {
           if (index === array.length - 1) {
             return (

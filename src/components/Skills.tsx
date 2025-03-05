@@ -1,3 +1,5 @@
+import { Typography } from './Typography'
+
 const skills = {
   languages: ['JavaScript', 'TypeScript', 'HTML5', 'CSS3'],
   frameworks: [
@@ -15,7 +17,7 @@ const skills = {
   tools: [
     'Git / GitHub / GitLab',
     'Vercel',
-    'npm',
+    'Npm',
     'Sentry',
     'Postman',
     'ESLint / Prettier',
@@ -31,7 +33,9 @@ const SkillGroup = ({ title, skills }: { title: string; skills: string[] }) => {
       <span className="uppercase mb-2 block">{title}</span>
       <ul>
         {skills.map((skill) => (
-          <li key={skill}>{skill}</li>
+          <li key={skill}>
+            <Typography className="font-normal">{skill}</Typography>
+          </li>
         ))}
       </ul>
     </li>

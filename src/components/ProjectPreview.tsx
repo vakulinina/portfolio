@@ -1,48 +1,171 @@
-import { useState } from 'react'
+import { useState, useCallback, useRef } from 'react'
 
 interface ProjectCardProps {
   images: string[]
 }
 
+const SliderButton = ({
+  onClick,
+  children,
+  className,
+}: {
+  onClick: () => void
+  children: React.ReactNode
+  className?: string
+}) => {
+  return (
+    <button
+      onClick={onClick}
+      className={`absolute top-1/2 -translate-y-1/2 bg-primary/10 text-white p-2 rounded-md hover:bg-primary/60 ${className}`}
+    >
+      {children}
+    </button>
+  )
+}
+
+const Chevron = ({ direction }: { direction: 'left' | 'right' }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth="1.5"
+      stroke="currentColor"
+      className={`size-6 ${direction === 'right' ? 'rotate-180' : ''}`}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M15.75 19.5 8.25 12l7.5-7.5"
+      />
+    </svg>
+  )
+}
+
 export const ProjectPreview = ({ images }: ProjectCardProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [isTransitioning, setIsTransitioning] = useState(false)
+  const slideRef = useRef<HTMLDivElement>(null)
 
-  const nextSlide = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % images.length)
+  // Handle the transition end event
+  const handleTransitionEnd = useCallback(() => {
+    // Skip transition logic for single images
+    if (images.length <= 1) {
+      setIsTransitioning(false)
+      return
+    }
+
+    if (slideRef.current) {
+      // If we're at the clone of the last slide (at position 0)
+      if (currentImageIndex === -1) {
+        slideRef.current.style.transition = 'none'
+        setCurrentImageIndex(images.length - 1)
+        setTimeout(() => {
+          if (slideRef.current) {
+            slideRef.current.style.transition = 'transform 500ms ease-in-out'
+          }
+        }, 10)
+      } else if (currentImageIndex === images.length) {
+        slideRef.current.style.transition = 'none'
+        setCurrentImageIndex(0)
+        setTimeout(() => {
+          if (slideRef.current) {
+            slideRef.current.style.transition = 'transform 500ms ease-in-out'
+          }
+        }, 10)
+      }
+    }
+    setIsTransitioning(false)
+  }, [currentImageIndex, images.length])
+
+  const nextSlide = useCallback(() => {
+    if (!isTransitioning && images.length > 1) {
+      setIsTransitioning(true)
+      setCurrentImageIndex((prev) => prev + 1)
+    }
+  }, [isTransitioning, images.length])
+
+  const prevSlide = useCallback(() => {
+    if (!isTransitioning && images.length > 1) {
+      setIsTransitioning(true)
+      setCurrentImageIndex((prev) => prev - 1)
+    }
+  }, [isTransitioning, images.length])
+
+  // Create the array of slides with clones for infinite effect
+  const getSlides = () => {
+    if (images.length === 0) return []
+
+    // For a single image, just return it
+    if (images.length === 1) return images
+
+    // For multiple images, add clones at the beginning and end
+    const lastImage = images[images.length - 1]
+    const firstImage = images[0]
+
+    return [lastImage, ...images, firstImage]
   }
 
-  const prevSlide = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length)
+  const slides = getSlides()
+
+  // Calculate the transform position
+  const getTransformValue = () => {
+    // If there's only one image, don't transform
+    if (images.length === 1) return 'translateX(0)'
+
+    // Adjust for the cloned slide at the beginning
+    const adjustedIndex = currentImageIndex + 1
+    return `translateX(-${(adjustedIndex * 100) / slides.length}%)`
   }
 
   return (
-    <div className="shadow-md rounded-md p-4 h-[400px] w-full relative border border-white">
+    <div className="shadow-md rounded-md h-[400px] w-full relative border border-white bg-background hover:md:scale-130 transition-all duration-300">
       <div className="w-full h-full relative overflow-hidden">
-        {images.length > 0 && (
-          <img
-            src={images[currentImageIndex]}
-            alt={`Slide ${currentImageIndex + 1}`}
-            className="w-full h-full object-cover rounded-md"
-          />
+        {slides.length > 0 && (
+          <div
+            ref={slideRef}
+            className="flex transition-transform duration-500 ease-in-out h-full w-full"
+            style={{
+              transform: getTransformValue(),
+              width: `${slides.length * 100}%`,
+            }}
+            onTransitionEnd={handleTransitionEnd}
+          >
+            {slides.map((image, index) => (
+              <img
+                key={index}
+                src={image}
+                alt={`Slide ${index}`}
+                className="w-full h-full object-contain rounded-md flex-shrink-0"
+                style={{ width: `${100 / slides.length}%` }}
+              />
+            ))}
+          </div>
         )}
       </div>
 
       {images.length > 1 && (
         <>
-          <button
-            onClick={prevSlide}
-            className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70"
-            aria-label="Previous slide"
-          >
-            ←
-          </button>
-          <button
-            onClick={nextSlide}
-            className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70"
-            aria-label="Next slide"
-          >
-            →
-          </button>
+          <SliderButton onClick={prevSlide} className="left-2 z-10">
+            <Chevron direction="left" />
+          </SliderButton>
+          <SliderButton onClick={nextSlide} className="right-2 z-10">
+            <Chevron direction="right" />
+          </SliderButton>
+
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+            {images.map((_, index) => (
+              <button
+                key={index}
+                className={`w-2 h-2 rounded-full ${
+                  index === currentImageIndex
+                    ? 'bg-primary/60'
+                    : 'bg-primary/10'
+                }`}
+                onClick={() => setCurrentImageIndex(index)}
+              />
+            ))}
+          </div>
         </>
       )}
     </div>
