@@ -38,6 +38,7 @@ const ProjectDescription = ({ description }: { description: string }) => {
 export const ProjectArticle = ({
   className,
   images,
+  imageStyles,
   tech,
   description,
   title,
@@ -48,13 +49,14 @@ export const ProjectArticle = ({
   tech: string[]
   description: string
   images: string[]
+  imageStyles: string
   title: string
   liveLink: string
   githubLink: string
 }) => {
   return (
     <article className={`flex flex-col gap-4 ${className}`}>
-      <ProjectPreview images={images} />
+      <ProjectPreview images={images} className={imageStyles} />
       <ProjectTitle title={title} link={liveLink || githubLink} />
       <ul className="flex flex-wrap gap-2">
         {tech.map((techItem) => (

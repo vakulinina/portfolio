@@ -2,6 +2,7 @@ import { useState, useCallback, useRef } from 'react'
 
 interface ProjectCardProps {
   images: string[]
+  className?: string
 }
 
 const Chevron = ({ direction }: { direction: 'left' | 'right' }) => {
@@ -47,7 +48,7 @@ const SliderButton = ({
   )
 }
 
-export const ProjectPreview = ({ images }: ProjectCardProps) => {
+export const ProjectPreview = ({ images, className }: ProjectCardProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
   const slideRef = useRef<HTMLDivElement>(null)
@@ -141,7 +142,7 @@ export const ProjectPreview = ({ images }: ProjectCardProps) => {
                 key={index}
                 src={image}
                 alt={`Slide ${index}`}
-                className="w-full h-full object-contain rounded-md flex-shrink-0"
+                className={`w-full h-full object-contain rounded-md flex-shrink-0 ${className}`}
                 style={{ width: `${100 / slides.length}%` }}
               />
             ))}

@@ -19,6 +19,7 @@ export type Project = {
   description: string
   liveLink: string
   githubLink: string
+  imageStyles: string
 }
 
 export const projects = {
@@ -34,10 +35,11 @@ export const projects = {
         'HTML/CSS',
       ],
       images: [omo1, omo2],
+      imageStyles: '',
       description:
         'An onboarding web platform for a mobile weight loss app Omo, leading users through a personalized flow to purchase plans and manage subscriptions.',
       liveLink: 'https://omo-app.io/',
-      githubLink: '',
+      githubLink: '!object-cover',
     },
     {
       title: 'Go Alberta Booster',
@@ -50,6 +52,7 @@ export const projects = {
         'HTML/CSS',
       ],
       images: [goAlberta1, goAlberta2, goAlberta3, goAlberta4, goAlberta5],
+      imageStyles: '!object-cover object-top',
       description:
         'A sophisticated rewards-based crowdfunding platform, enabling local entrepreneurs to showcase their ventures and connect with potential investors.',
       liveLink: 'https://go-alberta.vercel.app/',
@@ -61,6 +64,7 @@ export const projects = {
       title: 'Online Zoo',
       tech: ['JavaScript', 'HTML/CSS'],
       images: [onlineZoo1, onlineZoo2, onlineZoo3],
+      imageStyles: '!object-cover object-top',
       description:
         '🐼 Adaptive layout for a zoo website where you can choose and watch animals online.',
       liveLink: 'https://vakulinina.github.io/online-zoo/pages/main',
@@ -70,6 +74,7 @@ export const projects = {
       title: 'Weather Forecast',
       tech: ['React', 'TypeScript', 'Redux', 'SCSS', 'Vitest', 'HTML/CSS'],
       images: [weather2],
+      imageStyles: '',
       description:
         '🌦️ A simple weather forecast app, providing real-time weather data with a clean, responsive interface. Accessibility features implemented.',
       liveLink: 'https://weather-app-gilt-nu-16.vercel.app/',
@@ -79,6 +84,7 @@ export const projects = {
       title: 'Movie Seat Booking',
       tech: ['JavaScript', 'HTML/CSS'],
       images: [seatBooking2],
+      imageStyles: '',
       description: '🍿 A sleek movie theatre seat booking interface.',
       liveLink: 'https://vakulinina.github.io/movie-seat-booking/',
       githubLink: 'https://github.com/vakulinina/movie-seat-booking',

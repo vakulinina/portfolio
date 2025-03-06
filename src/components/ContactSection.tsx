@@ -21,12 +21,14 @@ const ArrowRightIcon = () => {
 
 const ContactLink = ({ href, label }: { href: string; label: string }) => {
   return (
-    <li className="border rounded-lg border-secondary/30 bg-background hover:translate-x-2 transition-all duration-300 cursor-pointer group">
+    <li className="border rounded-lg border-secondary/30 bg-background hover:translate-x-2 hover:border-highlight transition-all duration-300 cursor-pointer group">
       <a
         href={href}
-        className="flex items-center justify-between gap-2 py-3 px-6"
+        className="flex items-center justify-between gap-2 py-3 px-6 "
       >
-        <Typography variant="body">{label}</Typography>
+        <Typography variant="body" className="group-hover:!text-highlight">
+          {label}
+        </Typography>
         <ArrowRightIcon />
       </a>
     </li>

@@ -26,6 +26,7 @@ const Section = ({
         <ProjectArticle
           key={project.title}
           images={project.images}
+          imageStyles={project.imageStyles}
           tech={project.tech}
           description={project.description}
           title={project.title}
