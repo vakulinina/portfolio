@@ -4,7 +4,7 @@ import { Typography } from './Typography'
 export const AboutSection = ({ id }: { id: string }) => {
   return (
     <section id={id} className="flex flex-col gap-6 pt-24">
-      <Typography className="mb-16 !text-lg">
+      <Typography className="mb-16 !text-lg ">
         I'm Valeria, a <span className="text-primary">Frontend Developer</span>{' '}
         with a strong eye for detail and a passion for building seamless,
         high-quality digital experiences.
