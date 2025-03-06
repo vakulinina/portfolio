@@ -44,10 +44,15 @@ const SkillGroup = ({ title, skills }: { title: string; skills: string[] }) => {
 
 export const Skills = () => {
   return (
-    <ul className="flex gap-4 justify-between">
-      <SkillGroup title="Languages" skills={skills.languages} />
-      <SkillGroup title="Frameworks & Libraries" skills={skills.frameworks} />
-      <SkillGroup title="Tools & Platforms" skills={skills.tools} />
-    </ul>
+    <>
+      <Typography variant="subheader" as="h3">
+        My toolbox
+      </Typography>
+      <ul className="flex gap-4 justify-between">
+        <SkillGroup title="Languages" skills={skills.languages} />
+        <SkillGroup title="Frameworks & Libraries" skills={skills.frameworks} />
+        <SkillGroup title="Tools & Platforms" skills={skills.tools} />
+      </ul>
+    </>
   )
 }

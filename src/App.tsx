@@ -1,6 +1,6 @@
 import { AboutSection } from './components/AboutSection'
 import { ContactSection } from './components/ContactSection'
-import { NavBar } from './components/NavBar'
+import { Header } from './components/Header'
 import { ProjectsSection } from './components/ProjectsSection'
 
 function App() {
@@ -17,11 +17,16 @@ function App() {
         }}
       />
 
-      <header className="sticky top-2 w-full left-0 z-10">
-        <NavBar />
-      </header>
+      <Header />
 
-      <main className="flex flex-col gap-18 py-12">
+      <main className="flex flex-col py-12">
+        <h1 className="tracking-tighter text-3xl md:text-5xl lg:text-6xl font-medium text-balance text-[#4b5563] my-20">
+          <span className="text-highlight text-4xl sm:text-6xl md:text-7xl block mb-4">
+            Valeria Akulinina
+          </span>
+          crafting seamless digital experiences with{' '}
+          <span className="text-highlight">precision and care</span>
+        </h1>
         <AboutSection id="about" />
         <ProjectsSection id="projects" />
         <ContactSection id="contact" />

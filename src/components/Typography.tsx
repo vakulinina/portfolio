@@ -5,19 +5,23 @@ const styles = {
   caption: 'text-xs text-secondary',
 }
 
+interface TypographyProps extends React.HTMLAttributes<HTMLElement> {
+  variant?: 'header' | 'subheader' | 'body' | 'caption'
+  children: React.ReactNode
+  as?: React.ElementType
+}
+
 export const Typography = ({
   className,
   variant = 'body',
   children,
   as = 'p',
-}: {
-  className?: string
-  variant?: 'header' | 'subheader' | 'body' | 'caption'
-  children: React.ReactNode
-  as?: React.ElementType
-}) => {
+  ...props
+}: TypographyProps) => {
   const Element = as
   return (
-    <Element className={`${styles[variant]} ${className}`}>{children}</Element>
+    <Element className={`${styles[variant]} ${className}`} {...props}>
+      {children}
+    </Element>
   )
 }

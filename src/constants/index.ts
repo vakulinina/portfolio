@@ -17,6 +17,8 @@ export type Project = {
   tech: string[]
   images: string[]
   description: string
+  liveLink: string
+  githubLink: string
 }
 
 export const projects = {
@@ -33,7 +35,7 @@ export const projects = {
       ],
       images: [omo1, omo2],
       description:
-        'An onboarding web platform for a mobile weight loss app Omo. The application was designed to enhance user engagement through various features like onboarding, purchases, and a user cabinet. ',
+        'An onboarding web platform for a mobile weight loss app Omo, leading users through a personalized flow to purchase plans and manage subscriptions.',
       liveLink: 'https://omo-app.io/',
       githubLink: '',
     },
@@ -49,7 +51,7 @@ export const projects = {
       ],
       images: [goAlberta1, goAlberta2, goAlberta3, goAlberta4, goAlberta5],
       description:
-        'A sophisticated rewards-based crowdfunding platform, enabling local entrepreneurs to showcase their ventures and connect with potential investors',
+        'A sophisticated rewards-based crowdfunding platform, enabling local entrepreneurs to showcase their ventures and connect with potential investors.',
       liveLink: 'https://go-alberta.vercel.app/',
       githubLink: 'https://github.com/vakulinina/go-alberta',
     },

@@ -3,25 +3,27 @@ import { Typography } from './Typography'
 
 export const AboutSection = ({ id }: { id: string }) => {
   return (
-    <section id={id} className="flex flex-col gap-6 ">
-      <Typography variant="header" as="h2">
-        Hi, I'm a software engineer
+    <section id={id} className="flex flex-col gap-6 pt-24">
+      <Typography className="mb-16 !text-lg">
+        I'm Valeria, a <span className="text-primary">Frontend Developer</span>{' '}
+        with a strong eye for detail and a passion for building seamless,
+        high-quality digital experiences.
+        <br />
+        <br />
+        My journey started in quality assurance, where I learned to spot the
+        tiniest flaws and developed an obsession with{' '}
+        <span className="text-primary">polished user experiences</span>. That
+        mindset still drives me today—whether I'm fine-tuning performance,
+        optimizing accessibility, or crafting{' '}
+        <span className="text-primary">interactions that just click</span>.
+        <br />
+        <br />
+        <span className="text-primary">With over six years in tech</span>, I
+        bring both precision and creativity to every project, making the web a{' '}
+        <span className="text-primary">more beautiful, intuitive place</span>
+        —one line of code at a time.
       </Typography>
-      <Typography>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam
-        dolores qui sed, soluta laborum alias voluptas perferendis odio
-        voluptates quae minus ullam natus maxime aliquid rerum optio
-        exercitationem architecto quod. Lorem ipsum dolor sit amet consectetur
-        adipisicing elit. Voluptates debitis voluptatem delectus, consequatur
-        eum maxime soluta magnam laborum perferendis sit, maiores quam?
-        Molestias quos eius voluptate laudantium quas, ullam velit. Lorem ipsum
-        dolor sit amet consectetur, adipisicing elit. Quibusdam dolores qui sed,
-        soluta laborum alias voluptas perferendis odio voluptates quae minus
-        ullam natus maxime aliquid
-      </Typography>
-      <Typography variant="subheader" as="h3">
-        Skills
-      </Typography>
+
       <Skills />
     </section>
   )

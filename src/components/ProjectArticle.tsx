@@ -1,11 +1,25 @@
 import { ProjectPreview } from './ProjectPreview'
 import { Typography } from './Typography'
 
-const ProjectTitle = ({ title }: { title: string }) => {
+const ProjectTitle = ({ title, link }: { title: string; link?: string }) => {
+  if (!link) {
+    return (
+      <Typography variant="subheader" as="h3">
+        {title}
+      </Typography>
+    )
+  }
+
   return (
-    <Typography variant="subheader" as="h3">
-      {title}
-    </Typography>
+    <a href={link} target="_blank" rel="noopener noreferrer">
+      <Typography
+        variant="subheader"
+        as="h3"
+        className="hover:text-secondary transition-all duration-300"
+      >
+        {title}
+      </Typography>
+    </a>
   )
 }
 
@@ -27,17 +41,21 @@ export const ProjectArticle = ({
   tech,
   description,
   title,
+  liveLink,
+  githubLink,
 }: {
   className?: string
   tech: string[]
   description: string
   images: string[]
   title: string
+  liveLink: string
+  githubLink: string
 }) => {
   return (
     <article className={`flex flex-col gap-4 ${className}`}>
       <ProjectPreview images={images} />
-      <ProjectTitle title={title} />
+      <ProjectTitle title={title} link={liveLink || githubLink} />
       <ul className="flex flex-wrap gap-2">
         {tech.map((techItem) => (
           <li key={techItem}>

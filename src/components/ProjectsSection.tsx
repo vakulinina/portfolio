@@ -20,7 +20,7 @@ const Section = ({
   projects: Project[]
 }) => {
   return (
-    <div className="flex flex-col gap-12 py-12" id={id}>
+    <div className="flex flex-col gap-12 pt-24" id={id}>
       <SectionTitle title={title} />
       {projects.map((project) => (
         <ProjectArticle
@@ -29,6 +29,8 @@ const Section = ({
           tech={project.tech}
           description={project.description}
           title={project.title}
+          liveLink={project.liveLink}
+          githubLink={project.githubLink}
           className="mb-12"
         />
       ))}

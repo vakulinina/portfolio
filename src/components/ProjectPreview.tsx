@@ -4,29 +4,9 @@ interface ProjectCardProps {
   images: string[]
 }
 
-const SliderButton = ({
-  onClick,
-  children,
-  className,
-}: {
-  onClick: () => void
-  children: React.ReactNode
-  className?: string
-}) => {
-  return (
-    <button
-      onClick={onClick}
-      className={`absolute top-1/2 -translate-y-1/2 bg-primary/10 text-white p-2 rounded-md hover:bg-primary/60 ${className}`}
-    >
-      {children}
-    </button>
-  )
-}
-
 const Chevron = ({ direction }: { direction: 'left' | 'right' }) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth="1.5"
@@ -39,6 +19,31 @@ const Chevron = ({ direction }: { direction: 'left' | 'right' }) => {
         d="M15.75 19.5 8.25 12l7.5-7.5"
       />
     </svg>
+  )
+}
+
+const SliderButton = ({
+  onClick,
+  className,
+  direction,
+}: {
+  onClick: () => void
+  className?: string
+  direction: 'left' | 'right'
+}) => {
+  return (
+    <button
+      onClick={onClick}
+      className={`absolute top-1/2 -translate-y-1/2 h-full flex items-center group ${
+        direction === 'left' ? 'pl-2 left-0' : 'pr-2 right-0'
+      } ${className}`}
+    >
+      <div
+        className={`bg-primary/10 text-white p-2 rounded-md group-hover:bg-primary/60`}
+      >
+        <Chevron direction={direction} />
+      </div>
+    </button>
   )
 }
 
@@ -119,7 +124,7 @@ export const ProjectPreview = ({ images }: ProjectCardProps) => {
   }
 
   return (
-    <div className="shadow-md rounded-md h-[400px] w-full relative border border-white bg-background hover:md:scale-130 transition-all duration-300">
+    <div className="shadow-md rounded-xl h-[300px] sm:h-[375px] md:h-[400px] w-full relative border border-white bg-background hover:md:scale-130 transition-all duration-300 delay-300">
       <div className="w-full h-full relative overflow-hidden">
         {slides.length > 0 && (
           <div
@@ -146,12 +151,8 @@ export const ProjectPreview = ({ images }: ProjectCardProps) => {
 
       {images.length > 1 && (
         <>
-          <SliderButton onClick={prevSlide} className="left-2 z-10">
-            <Chevron direction="left" />
-          </SliderButton>
-          <SliderButton onClick={nextSlide} className="right-2 z-10">
-            <Chevron direction="right" />
-          </SliderButton>
+          <SliderButton onClick={prevSlide} direction="left" />
+          <SliderButton onClick={nextSlide} direction="right" />
 
           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
             {images.map((_, index) => (
