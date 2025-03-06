@@ -125,7 +125,7 @@ export const ProjectPreview = ({ images, className }: ProjectCardProps) => {
   }
 
   return (
-    <div className="shadow-md rounded-xl h-[300px] sm:h-[375px] md:h-[400px] w-full relative border border-white bg-background hover:md:scale-130 transition-all duration-300 delay-300 overflow-hidden">
+    <div className="shadow-md rounded-xl h-[300px] sm:h-[375px] md:h-[400px] w-full relative border border-white bg-background hover:md:scale-130 hover:shadow-2xl transition-all duration-300 delay-300 overflow-hidden">
       <div className="w-full h-full relative overflow-hidden">
         {slides.length > 0 && (
           <div

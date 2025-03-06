@@ -1,6 +1,4 @@
-adapt to mobile
 create more detailed descriptions for projects
-make sure there is a tech tag for every tech used in the project
 make sure the project card is a link to the project
 work on dark/light mode (?)
 add github links to projects (?)
