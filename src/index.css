@@ -5,6 +5,8 @@
   --color-secondary: #6b7280;
   --color-highlight: #241c2e;
   --color-background: #f9f9f9;
+
+  --breakpoint-xs: 28rem;
 }
 
 :root {

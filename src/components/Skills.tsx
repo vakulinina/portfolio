@@ -48,7 +48,7 @@ export const Skills = () => {
       <Typography variant="subheader" as="h3">
         My toolbox
       </Typography>
-      <ul className="flex gap-4 justify-between">
+      <ul className="flex gap-4 justify-between flex-col xs:flex-row">
         <SkillGroup title="Languages" skills={skills.languages} />
         <SkillGroup title="Frameworks & Libraries" skills={skills.frameworks} />
         <SkillGroup title="Tools & Platforms" skills={skills.tools} />

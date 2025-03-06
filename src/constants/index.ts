@@ -52,7 +52,7 @@ export const projects = {
         'HTML/CSS',
       ],
       images: [goAlberta1, goAlberta2, goAlberta3, goAlberta4, goAlberta5],
-      imageStyles: '!object-cover object-top',
+      imageStyles: '!object-cover object-left-top',
       description:
         'A sophisticated rewards-based crowdfunding platform, enabling local entrepreneurs to showcase their ventures and connect with potential investors.',
       liveLink: 'https://go-alberta.vercel.app/',
@@ -64,9 +64,9 @@ export const projects = {
       title: 'Online Zoo',
       tech: ['JavaScript', 'HTML/CSS'],
       images: [onlineZoo1, onlineZoo2, onlineZoo3],
-      imageStyles: '!object-cover object-top',
+      imageStyles: '!object-cover object-left-top',
       description:
-        '🐼 Adaptive layout for a zoo website where you can choose and watch animals online.',
+        'Adaptive layout for a zoo website where you can choose and watch animals online.',
       liveLink: 'https://vakulinina.github.io/online-zoo/pages/main',
       githubLink: 'https://github.com/vakulinina/online-zoo',
     },
@@ -76,7 +76,7 @@ export const projects = {
       images: [weather2],
       imageStyles: '',
       description:
-        '🌦️ A simple weather forecast app, providing real-time weather data with a clean, responsive interface. Accessibility features implemented.',
+        'A simple weather forecast app, providing real-time weather data with a clean, responsive interface. Accessibility features implemented.',
       liveLink: 'https://weather-app-gilt-nu-16.vercel.app/',
       githubLink: 'https://github.com/vakulinina/weather-app',
     },
@@ -85,7 +85,7 @@ export const projects = {
       tech: ['JavaScript', 'HTML/CSS'],
       images: [seatBooking2],
       imageStyles: '',
-      description: '🍿 A sleek movie theatre seat booking interface.',
+      description: 'A sleek movie theatre seat booking interface.',
       liveLink: 'https://vakulinina.github.io/movie-seat-booking/',
       githubLink: 'https://github.com/vakulinina/movie-seat-booking',
     },

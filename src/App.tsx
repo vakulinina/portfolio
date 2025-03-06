@@ -19,7 +19,7 @@ function App() {
 
       <Header />
 
-      <main className="flex flex-col py-12">
+      <main className="flex flex-col py-12 w-full">
         <h1 className="tracking-tighter text-3xl md:text-5xl lg:text-6xl font-medium text-balance text-[#4b5563] my-20">
           <span className="text-highlight text-4xl sm:text-6xl md:text-7xl block mb-4">
             Valeria Akulinina

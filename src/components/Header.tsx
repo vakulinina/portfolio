@@ -21,21 +21,20 @@ const NavLink = ({ href, label }: { href: string; label: string }) => {
 
 export const Header = () => {
   return (
-    <header className="sticky top-2 w-full left-0 z-10">
-      <nav className="flex items-center top-0 left-0 z-10 rounded-2xl bg-white/60 backdrop-blur-sm p-1.5 pl-4 h-14">
+    <header className="sticky top-2 gap-2 md:gap-4 w-full left-0 z-10">
+      <nav className="flex items-center justify-between top-0 left-0 z-10 rounded-2xl bg-white/60 backdrop-blur-sm p-1.5 pl-4 h-14 gap-2 md:gap-4">
         <img src={logo} alt="" className="h-[40px]" />
 
-        <ul className="flex gap-1 justify-center items-center w-full">
-          {navItems.map((item, index, array) => {
-            if (index === array.length - 1) {
-              return <li key={item.href}></li>
-            } else {
-              return (
-                <li key={item.href} className="px-4">
-                  <NavLink href={item.href} label={item.label} />
-                </li>
-              )
-            }
+        <ul
+          className="justify-between items-center gap-4 sm:gap-8 max-w-fit hidden xs:flex"
+          style={{ justifyContent: 'space-between' }}
+        >
+          {navItems.slice(0, 3).map((item) => {
+            return (
+              <li key={item.href}>
+                <NavLink href={item.href} label={item.label} />
+              </li>
+            )
           })}
         </ul>
 

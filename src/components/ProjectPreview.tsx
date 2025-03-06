@@ -142,7 +142,7 @@ export const ProjectPreview = ({ images, className }: ProjectCardProps) => {
                 key={index}
                 src={image}
                 alt={`Slide ${index}`}
-                className={`w-full h-full object-contain rounded-md flex-shrink-0 ${className}`}
+                className={`w-full h-full object-contain object- rounded-md flex-shrink-0 ${className}`}
                 style={{ width: `${100 / slides.length}%` }}
               />
             ))}
