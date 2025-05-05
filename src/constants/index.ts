@@ -55,7 +55,7 @@ export const projects = {
       imageStyles: '!object-cover object-left-top',
       description:
         'A sophisticated rewards-based crowdfunding platform, enabling local entrepreneurs to showcase their ventures and connect with potential investors.',
-      liveLink: 'https://go-alberta.vercel.app/',
+      liveLink: '', // TODO: add live link if backend is deployed
       githubLink: 'https://github.com/vakulinina/go-alberta',
     },
   ],
